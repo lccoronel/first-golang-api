@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  db:
+    build:
+      context: .
+      dockerfile: .dockerfile
+    image: github.com/hyperyuri/go-db
+    container_name: go-mvc
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "25432:5432"
+    environment:
+      POSTGRES_DB: students
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 123456
+      PGDATA: /var/lib/postgresql/data/go-mvc
+    volumes:
+      - webapi-mvc:/var/lib/postgresql/data
+
+volumes:
+  go-mvc:
