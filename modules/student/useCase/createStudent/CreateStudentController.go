@@ -1,6 +1,7 @@
 package createstudent
 
 import (
+	"main/modules/dtos"
 	"main/modules/student/entities"
 	"net/http"
 
@@ -15,7 +16,12 @@ func CreateStudentController(c *gin.Context) {
 	}
 
 	// keep duplicate name validator
-	CreateStudentUseCase(student)
+	student, error := CreateStudentUseCase(student)
 
-	c.IndentedJSON(http.StatusCreated, student)
+	if error == nil {
+		c.IndentedJSON(http.StatusCreated, student)
+	} else {
+		c.IndentedJSON(http.StatusBadRequest, dtos.Error{Message: error.Error()})
+	}
+
 }
