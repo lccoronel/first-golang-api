@@ -1,6 +1,7 @@
 package updatestudent
 
 import (
+	"main/modules/dtos"
 	"main/modules/student/entities"
 	"net/http"
 
@@ -13,6 +14,9 @@ func UpdateStudentController(c *gin.Context) {
 
 	student, error := UpdateStudentUseCase(id, paramStudent)
 
-	c.IndentedJSON(http.StatusOK, student)
-	c.IndentedJSON(http.StatusNotFound, error)
+	if error == nil {
+		c.IndentedJSON(http.StatusOK, student)
+	} else {
+		c.IndentedJSON(http.StatusNotFound, dtos.Error{Message: error.Error()})
+	}
 }
