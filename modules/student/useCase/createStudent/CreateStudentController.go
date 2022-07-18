@@ -14,6 +14,7 @@ func CreateStudentController(c *gin.Context) {
 		return
 	}
 
+	// keep duplicate name validator
 	CreateStudentUseCase(student)
 
 	c.IndentedJSON(http.StatusCreated, student)
