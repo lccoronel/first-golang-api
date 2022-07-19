@@ -17,6 +17,6 @@ func UpdateStudentController(c *gin.Context) {
 	if error == nil {
 		c.IndentedJSON(http.StatusOK, student)
 	} else {
-		c.IndentedJSON(http.StatusNotFound, dtos.Error{Message: error.Error()})
+		c.IndentedJSON(http.StatusNotFound, dtos.Response{Message: error.Error()})
 	}
 }

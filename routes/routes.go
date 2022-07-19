@@ -2,6 +2,7 @@ package routes
 
 import (
 	createstudent "main/modules/student/useCase/createStudent"
+	"main/modules/student/useCase/deleteStudent"
 	liststudents "main/modules/student/useCase/listStudents"
 	updatestudent "main/modules/student/useCase/updateStudent"
 
@@ -16,6 +17,7 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 			students.GET("/", liststudents.ListStudentsController)
 			students.POST("/", createstudent.CreateStudentController)
 			students.PUT("/:id", updatestudent.UpdateStudentController)
+			students.DELETE("/:id", deleteStudent.DeleteStudentController)
 		}
 	}
 

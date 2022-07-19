@@ -15,13 +15,12 @@ func CreateStudentController(c *gin.Context) {
 		return
 	}
 
-	// keep duplicate name validator
 	student, error := CreateStudentUseCase(student)
 
 	if error == nil {
 		c.IndentedJSON(http.StatusCreated, student)
 	} else {
-		c.IndentedJSON(http.StatusBadRequest, dtos.Error{Message: error.Error()})
+		c.IndentedJSON(http.StatusBadRequest, dtos.Response{Message: error.Error()})
 	}
 
 }

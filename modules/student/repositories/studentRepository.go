@@ -21,6 +21,7 @@ func FindStudentById(id string) entities.Student {
 func DeleteStudentById(id string) bool {
 	var deletedUser bool = false
 
+	// keep developing delete user
 	for i := 0; i < len(database.StudentsList); i++ {
 		if database.StudentsList[i].Id.String() == id {
 			helpers.RemoveIndex(database.StudentsList, i)

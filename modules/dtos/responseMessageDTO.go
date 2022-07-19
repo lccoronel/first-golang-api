@@ -1,5 +1,5 @@
 package dtos
 
-type Error struct {
+type Response struct {
 	Message string
 }
