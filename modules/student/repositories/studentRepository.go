@@ -1,6 +1,7 @@
 package repositories
 
 import (
+	"fmt"
 	"main/database"
 	"main/helpers"
 	"main/modules/student/entities"
@@ -24,7 +25,10 @@ func DeleteStudentById(id string) bool {
 	// keep developing delete user
 	for i := 0; i < len(database.StudentsList); i++ {
 		if database.StudentsList[i].Id.String() == id {
-			helpers.RemoveIndex(database.StudentsList, i)
+			test := helpers.RemoveIndex(database.StudentsList, i)
+
+			fmt.Println(test)
+
 			deletedUser = true
 		}
 	}
