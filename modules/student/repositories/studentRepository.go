@@ -25,13 +25,25 @@ func DeleteStudentById(id string) bool {
 	// keep developing delete user
 	for i := 0; i < len(database.StudentsList); i++ {
 		if database.StudentsList[i].Id.String() == id {
-			test := helpers.RemoveIndex(database.StudentsList, i)
+			helpers.RemoveIndex(i)
 
-			fmt.Println(test)
+			fmt.Println("database => ", database.StudentsList)
 
 			deletedUser = true
 		}
 	}
 
 	return deletedUser
+}
+
+func FindStudentByName(name string) entities.Student {
+	var existsStudent entities.Student
+
+	for i := 0; i < len(database.StudentsList); i++ {
+		if database.StudentsList[i].Name == name {
+			existsStudent = database.StudentsList[i]
+		}
+	}
+
+	return existsStudent
 }
