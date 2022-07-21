@@ -10,12 +10,16 @@ import (
 
 func UpdateStudentController(c *gin.Context) {
 	id := c.Param("id")
-	var paramStudent entities.Student
+	var student entities.Student
 
-	student, error := UpdateStudentUseCase(id, paramStudent)
+	if err := c.BindJSON(&student); err != nil {
+		return
+	}
+
+	studentResponse, error := UpdateStudentUseCase(id, student)
 
 	if error == nil {
-		c.IndentedJSON(http.StatusOK, student)
+		c.IndentedJSON(http.StatusOK, studentResponse)
 	} else {
 		c.IndentedJSON(http.StatusNotFound, dtos.Response{Message: error.Error()})
 	}
