@@ -1,4 +1,4 @@
-package createstudent
+package createStudent
 
 import (
 	"main/modules/dtos"

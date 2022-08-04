@@ -1,4 +1,4 @@
-package liststudents
+package listStudents
 
 import (
 	"main/database"

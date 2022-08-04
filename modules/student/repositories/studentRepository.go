@@ -4,6 +4,8 @@ import (
 	"main/database"
 	"main/helpers"
 	"main/modules/student/entities"
+
+	uuid "github.com/satori/go.uuid"
 )
 
 func FindStudentById(id string) entities.Student {
@@ -58,4 +60,17 @@ func UpdateStudentById(id string, paramStudent entities.Student) entities.Studen
 	}
 
 	return student
+}
+
+func CreateStudent(student entities.Student) {
+	uuid := uuid.NewV4()
+	database.StudentsList = append(
+		database.StudentsList,
+		entities.Student{
+			Id:     uuid,
+			Name:   student.Name,
+			Age:    student.Age,
+			Gender: student.Gender,
+		},
+	)
 }

@@ -1,12 +1,9 @@
-package createstudent
+package createStudent
 
 import (
 	"errors"
-	"main/database"
 	"main/modules/student/entities"
 	"main/modules/student/repositories"
-
-	uuid "github.com/satori/go.uuid"
 )
 
 func CreateStudentUseCase(student entities.Student) (entities.Student, error) {
@@ -18,17 +15,7 @@ func CreateStudentUseCase(student entities.Student) (entities.Student, error) {
 		return student, errors.New("student already exists")
 	}
 
-	// transfer this action to repositories
-	uuid := uuid.NewV4()
-	database.StudentsList = append(
-		database.StudentsList,
-		entities.Student{
-			Id:     uuid,
-			Name:   student.Name,
-			Age:    student.Age,
-			Gender: student.Gender,
-		},
-	)
+	repositories.CreateStudent(student)
 
 	return student, nil
 }
