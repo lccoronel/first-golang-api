@@ -1,4 +1,4 @@
-package updatestudent
+package updateStudent
 
 import (
 	"main/modules/dtos"

@@ -1,4 +1,4 @@
-package updatestudent
+package updateStudent
 
 import (
 	"errors"
@@ -23,16 +23,7 @@ func UpdateStudentUseCase(id string, paramStudent entities.Student) (entities.St
 		return student, errors.New("student already exists")
 	}
 
-	// transfer this action to repositories
-	for i := 0; i < amountStudent; i++ {
-		if database.StudentsList[i].Id.String() == id {
-			database.StudentsList[i].Name = paramStudent.Name
-			database.StudentsList[i].Age = paramStudent.Age
-			database.StudentsList[i].Gender = paramStudent.Gender
-
-			student = database.StudentsList[i]
-		}
-	}
+	student = repositories.UpdateStudentById(id, paramStudent)
 
 	if student.Name == "" {
 		return student, errors.New("student not found")

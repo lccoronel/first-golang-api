@@ -43,3 +43,19 @@ func FindStudentByName(name string) entities.Student {
 
 	return existsStudent
 }
+
+func UpdateStudentById(id string, paramStudent entities.Student) entities.Student {
+	var student entities.Student
+
+	for i := 0; i < len(database.StudentsList); i++ {
+		if database.StudentsList[i].Id.String() == id {
+			database.StudentsList[i].Name = paramStudent.Name
+			database.StudentsList[i].Age = paramStudent.Age
+			database.StudentsList[i].Gender = paramStudent.Gender
+
+			student = database.StudentsList[i]
+		}
+	}
+
+	return student
+}
