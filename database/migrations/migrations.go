@@ -1,7 +1,11 @@
 package migrations
 
-import "gorm.io/gorm"
+import (
+	"main/modules/student/entities"
+
+	"gorm.io/gorm"
+)
 
 func RunMigrations(db *gorm.DB) {
-	db.AutoMigrate()
+	db.AutoMigrate(entities.Student{})
 }

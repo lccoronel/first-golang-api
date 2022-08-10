@@ -1,10 +1,17 @@
 package entities
 
-import uuid "github.com/satori/go.uuid"
+import (
+	"time"
+
+	"gorm.io/gorm"
+)
 
 type Student struct {
-	Id     uuid.UUID
-	Name   string
-	Age    int
-	Gender bool
+	ID        uint           `json:"id" gorm:"primaryKey"`
+	Name      string         `json:"name"`
+	Age       int            `json:"age"`
+	Gender    bool           `json:"gender"`
+	CreatedAt time.Time      `json:"created"`
+	UpdatedAt time.Time      `json:"updated"`
+	DeletedAt gorm.DeletedAt `gorm:"index" json:"deleted"`
 }
