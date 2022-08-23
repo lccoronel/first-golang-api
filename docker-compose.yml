@@ -16,8 +16,6 @@ services:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: 123456
       PGDATA: /var/lib/postgresql/data/go-mvc
-    volumes:
-      - webapi-mvc:/var/lib/postgresql/data
 
 volumes:
   go-mvc:

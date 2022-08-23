@@ -32,15 +32,17 @@ func DeleteStudentById(id string) bool {
 }
 
 func FindStudentByName(name string) entities.Student {
-	var existsStudent entities.Student
+	db := database.GetDatabase()
 
-	for i := 0; i < len(database.StudentsList); i++ {
-		if database.StudentsList[i].Name == name {
-			existsStudent = database.StudentsList[i]
-		}
+	var student entities.Student
+
+	err := db.First(&student, name).Error
+
+	if err != nil {
+		return student
 	}
 
-	return existsStudent
+	return student
 }
 
 func UpdateStudentById(id string, paramStudent entities.Student) entities.Student {
