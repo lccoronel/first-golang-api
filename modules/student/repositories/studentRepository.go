@@ -62,14 +62,5 @@ func UpdateStudentById(id string, paramStudent entities.Student) entities.Studen
 }
 
 func CreateStudent(student entities.Student) {
-	// uuid := uuid.NewV4()
-	// database.StudentsList = append(
-	// 	database.StudentsList,
-	// 	entities.Student{
-	// 		ID:     uuid,
-	// 		Name:   student.Name,
-	// 		Age:    student.Age,
-	// 		Gender: student.Gender,
-	// 	},
-	// )
+	// create in database
 }
